@@ -1,0 +1,63 @@
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json"></script>
+<div id="ai-challenge-demo" class="min-h-[720px] bg-slate-50 text-slate-900 overflow-hidden rounded-2xl border border-slate-200 shadow-xl">
+<style>
+#ai-challenge-demo{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}#ai-challenge-demo .hero{background:linear-gradient(125deg,#063a65,#086b91 55%,#67c3de)}#ai-challenge-demo .card{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}#ai-challenge-demo .card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(15,23,42,.12)}#ai-challenge-demo .step{transition:all .18s ease}#ai-challenge-demo .step.active{transform:translateY(-4px);box-shadow:0 12px 25px rgba(2,92,150,.18);border-color:#0284c7}#ai-challenge-demo button:focus-visible{outline:3px solid #38bdf8;outline-offset:3px}@media(prefers-color-scheme:dark){#ai-challenge-demo{background:#071827;color:#e6f4ff}#ai-challenge-demo .light-card{background:#102536!important;color:#e6f4ff;border-color:#244258!important}#ai-challenge-demo .muted{color:#b7cad8!important}}
+</style>
+<section class="hero relative px-6 py-12 md:px-12 text-white">
+  <div class="absolute inset-0 opacity-20" style="background:radial-gradient(circle at 80% 20%,white,transparent 24%),linear-gradient(15deg,transparent 58%,#fff 59%,transparent 60%)"></div>
+  <div class="relative max-w-5xl mx-auto">
+    <div class="text-cyan-300 font-black tracking-tight text-6xl md:text-7xl leading-none">AI <span class="text-white text-3xl md:text-5xl align-middle">FOR A SAFER<br>TOMORROW</span></div>
+    <p class="mt-5 uppercase tracking-[.32em] text-sm md:text-lg font-semibold">Defence AI Challenge</p>
+    <p class="mt-3 text-cyan-100 tracking-widest text-xs md:text-sm">INNOVATE &nbsp; | &nbsp; SOLVE &nbsp; | &nbsp; STRENGTHEN &nbsp; | &nbsp; SECURE</p>
+  </div>
+</section>
+
+<section class="max-w-5xl mx-auto p-5 md:p-8">
+  <div class="grid md:grid-cols-3 gap-4">
+    <article class="card light-card rounded-2xl border border-red-100 bg-red-50 p-5">
+      <div class="inline-flex items-center gap-2 bg-red-500 text-white rounded-full px-4 py-2 font-bold">! &nbsp; PROBLEM STATEMENT</div>
+      <p class="mt-5 leading-7">Timely and accurate detection of potential threats along borders and sensitive areas is difficult due to the large volume of surveillance data, challenging terrain and adverse weather conditions.</p>
+    </article>
+    <article class="card light-card rounded-2xl border border-emerald-100 bg-emerald-50 p-5">
+      <div class="inline-flex items-center gap-2 bg-emerald-600 text-white rounded-full px-4 py-2 font-bold">💡 &nbsp; PROPOSED SOLUTION</div>
+      <p class="mt-5 leading-7">An AI-powered surveillance and threat detection system analyzes real-time data from cameras, drones and sensors to detect, classify and alert on suspicious activities.</p>
+    </article>
+    <article class="card light-card rounded-2xl border border-sky-100 bg-sky-50 p-5">
+      <div class="inline-flex items-center gap-2 bg-sky-700 text-white rounded-full px-4 py-2 font-bold">⚙ &nbsp; AI TOOLS USED</div>
+      <div class="grid grid-cols-2 gap-3 mt-5 text-sm">
+        <button type="button" data-tool="OpenAI GPT-4 | Analysis and intelligence" class="rounded-xl bg-white/80 p-3 hover:bg-white border border-sky-100 text-slate-800"><b>OpenAI</b><br>GPT-4</button>
+        <button type="button" data-tool="Meta Llama 3 | Vision and reasoning" class="rounded-xl bg-white/80 p-3 hover:bg-white border border-sky-100 text-slate-800"><b>Meta Llama</b><br>Llama 3</button>
+        <button type="button" data-tool="Python | Development and integration" class="rounded-xl bg-white/80 p-3 hover:bg-white border border-sky-100 text-slate-800"><b>Python</b><br>Integration</button>
+        <button type="button" data-tool="TensorFlow | Model training and computer vision" class="rounded-xl bg-white/80 p-3 hover:bg-white border border-sky-100 text-slate-800"><b>TensorFlow</b><br>Training</button>
+        <button type="button" data-tool="Google Cloud | Scalable deployment" class="rounded-xl bg-white/80 p-3 hover:bg-white border border-sky-100 text-slate-800"><b>Google Cloud</b><br>Deployment</button>
+        <button type="button" data-tool="Vector Database (FAISS) | Fast search and retrieval" class="rounded-xl bg-white/80 p-3 hover:bg-white border border-sky-100 text-slate-800"><b>FAISS</b><br>Retrieval</button>
+      </div>
+      <p id="tool-detail" class="mt-3 text-sm text-sky-900 muted" aria-live="polite">Click a tool to learn more.</p>
+    </article>
+  </div>
+
+  <div class="mt-7 light-card bg-white border border-slate-200 rounded-2xl p-5 md:p-7">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div><p class="text-xs text-sky-700 font-bold tracking-widest uppercase">Interactive demo</p><h2 class="text-2xl font-black text-sky-900 muted">HIGH LEVEL END-TO-END FLOW</h2></div>
+      <p class="text-sm text-slate-500 muted">Select each stage</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mt-6" id="steps">
+      <button type="button" class="step active text-left rounded-xl border-2 border-sky-500 bg-sky-50 p-4 text-slate-900" data-step="0"><span class="block text-2xl">📡</span><b>1. Data Collection</b></button>
+      <button type="button" class="step text-left rounded-xl border-2 border-transparent bg-emerald-50 p-4 text-slate-900" data-step="1"><span class="block text-2xl">🧠</span><b>2. AI Analysis</b></button>
+      <button type="button" class="step text-left rounded-xl border-2 border-transparent bg-orange-50 p-4 text-slate-900" data-step="2"><span class="block text-2xl">⚠️</span><b>3. Alert &amp; Notify</b></button>
+      <button type="button" class="step text-left rounded-xl border-2 border-transparent bg-violet-50 p-4 text-slate-900" data-step="3"><span class="block text-2xl">👤</span><b>4. Human Review</b></button>
+      <button type="button" class="step text-left rounded-xl border-2 border-transparent bg-teal-50 p-4 text-slate-900" data-step="4"><span class="block text-2xl">🛡️</span><b>5. Safer Outcomes</b></button>
+    </div>
+    <div id="step-detail" aria-live="polite" class="mt-5 rounded-xl bg-slate-900 text-white p-5">
+      <b class="text-cyan-300">DATA COLLECTION</b><p class="mt-1 text-slate-200">Capture real-time video and sensor data from multiple sources.</p>
+    </div>
+  </div>
+</section>
+<footer class="bg-gradient-to-r from-sky-100 via-cyan-50 to-sky-200 px-6 py-9 text-sky-950"><div class="max-w-5xl mx-auto flex flex-wrap justify-between items-center gap-3 font-black tracking-[.2em]"><span>SECURE BORDERS.<br>STRONGER NATION.</span><span>IDEAS TODAY.<br>A SAFER TOMORROW.</span></div></footer>
+<script>
+(()=>{const root=document.getElementById('ai-challenge-demo');const details=[['DATA COLLECTION','Capture real-time video and sensor data from multiple sources.'],['AI ANALYSIS','Use AI models to detect and classify suspicious activities.'],['ALERT & NOTIFY','Generate real-time alerts with location and confidence score.'],['HUMAN REVIEW','Present insights to defence personnel for quick validation and action.'],['SAFER OUTCOMES','Faster response, prevent threats and ensure national security.']];const out=root.querySelector('#step-detail');root.querySelectorAll('.step').forEach(b=>b.addEventListener('click',()=>{root.querySelectorAll('.step').forEach(x=>x.classList.remove('active'));b.classList.add('active');const d=details[Number(b.dataset.step)];out.innerHTML='<b class="text-cyan-300">'+d[0]+'</b><p class="mt-1 text-slate-200">'+d[1]+'</p>';}));const tool=root.querySelector('#tool-detail');root.querySelectorAll('[data-tool]').forEach(b=>b.addEventListener('click',()=>{const p=b.dataset.tool.split(' | ');tool.innerHTML='<b>'+p[0]+'</b> — '+p[1]+'.';}));})();
+</script></div>
